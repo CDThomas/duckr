@@ -4,6 +4,10 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as userActionCreators from 'redux/modules/users'
 
+const contextTypes = {
+  router: PropTypes.object.isRequired,
+}
+
 const propTypes = {
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
@@ -16,8 +20,10 @@ class AuthenticateContainer extends Component {
     this.handleAuth = this.handleAuth.bind(this)
   }
 
-  handleAuth () {
+  handleAuth (e) {
+    e.preventDefault()
     this.props.fetchAndHandleAuthedUser()
+      .then(() => this.context.router.replace('feed'))
   }
 
   render () {
@@ -31,6 +37,7 @@ class AuthenticateContainer extends Component {
 }
 
 AuthenticateContainer.propTypes = propTypes
+AuthenticateContainer.contextTypes = contextTypes
 
 function mapStateToProps (state) {
   return {

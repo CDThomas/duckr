@@ -21,7 +21,7 @@ function ActionLinks ({isAuthed}) {
         <li><Link className={link} to='/logout'>{'Logout'}</Link></li>
       </ul>
     : <ul>
-        <li><Link className={link} to='home'>{'Home'}</Link></li>
+        <li><Link className={link} to='/'>{'Home'}</Link></li>
         <li><Link className={link} to='/auth'>{'Authenticate'}</Link></li>
       </ul>
 }
