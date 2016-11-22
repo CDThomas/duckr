@@ -39,10 +39,10 @@ class AuthenticateContainer extends Component {
 AuthenticateContainer.propTypes = propTypes
 AuthenticateContainer.contextTypes = contextTypes
 
-function mapStateToProps (state) {
+function mapStateToProps ({users}) {
   return {
-    isFetching: state.isFetching,
-    error: state.error,
+    isFetching: users.isFetching,
+    error: users.error,
   }
 }
 

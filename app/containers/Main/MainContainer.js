@@ -26,7 +26,7 @@ class MainContainer extends Component {
     firebaseAuth().onAuthStateChanged(user => {
       if (user) {
         const userData = user.providerData[0]
-        const userInfo = formatUserInfo(userData)
+        const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid)
         this.props.authUser(user.uid)
         this.props.fetchingUserSuccess(user.uid, userInfo, Date.now())
 
@@ -55,6 +55,6 @@ MainContainer.propTypes = propTypes
 MainContainer.contextTypes = contextTypes
 
 export default connect(
-  state => ({isAuthed: state.isAuthed, isFetching: state.isFetching}),
+  ({users}) => ({isAuthed: users.isAuthed, isFetching: users.isFetching}),
   dispatch => bindActionCreators(userActionCreators, dispatch)
 )(MainContainer)
