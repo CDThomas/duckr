@@ -44,7 +44,17 @@ function fetchingLikesSuccess (likes) {
   }
 }
 
-export function addAndHandleLike (duckId, e) {
+export function setUsersLikes () {
+  return function (dispatch, getState) {
+    const uid = getState().users.authedId
+    dispatch(fetchingLikes())
+    fetchUsersLikes(uid)
+      .then(likes => dispatch(fetchingLikesSuccess(likes)))
+      .catch(error => dispatch(fetchLikesError(error)))
+  }
+}
+
+export function handleDeleteLike (duckId, e) {
   e.stopPropagation()
   return function (dispatch, getState) {
     dispatch(removeLike(duckId))
@@ -60,7 +70,7 @@ export function addAndHandleLike (duckId, e) {
   }
 }
 
-export function handleDeleteLike (duckId, e) {
+export function addAndHandleLike (duckId, e) {
   e.stopPropagation()
   return function (dispatch, getState) {
     dispatch(addLike(duckId))

@@ -29,9 +29,7 @@ Duck.propTypes = {
 
 export default function Duck (props) {
   const starIcon = props.isLiked === true ? likedIcon : icon
-  const starFn = props.isLiked === true
-    ? props.handleDeleteLike
-    : props.addAndHandleLike
+  const starFn = props.isLiked === true ? props.handleDeleteLike : props.addAndHandleLike
   return (
     <div
       className={duckContainer}
