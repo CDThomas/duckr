@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, IndexRoute, Route, hashHistory } from 'react-router'
 import { MainContainer, HomeContainer, AuthenticateContainer,
-  FeedContainer, LogoutContainer } from 'containers'
+  FeedContainer, LogoutContainer, UserContainer } from 'containers'
 
 export default function getRoutes (checkAuth) {
   return (
@@ -10,6 +10,7 @@ export default function getRoutes (checkAuth) {
         <Route path='auth' component={AuthenticateContainer} onEnter={checkAuth} />
         <Route path='feed' component={FeedContainer} onEnter={checkAuth} />
         <Route path='logout' component={LogoutContainer} />
+        <Route path='/:uid' component={UserContainer} />
         <IndexRoute component={HomeContainer} onEnter={checkAuth} />
       </Router>
     </Router>
