@@ -1,6 +1,6 @@
 import {
   fetchUsersLikes, saveToUsersLikes, deleteFromUsersLikes,
-  incrementNumberOfLikes, decrementNumberOfLikes
+  incrementNumberOfLikes, decrementNumberOfLikes,
 } from 'helpers/api'
 
 export const ADD_LIKE = 'ADD_LIKE'
